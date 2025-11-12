@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
       - name: wisecow
-        # Replace <YOUR_GH_USERNAME_OR_ORG> with your GitHub username or org if you plan to pull from GHCR.
-        image: ghcr.io/<YOUR_GH_USERNAME_OR_ORG>/wisecow:latest
+        image: ghcr.io/cnu1812/wisecow:latest
         ports:
         - containerPort: 4499
         env:
