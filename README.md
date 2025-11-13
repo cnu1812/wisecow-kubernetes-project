@@ -34,14 +34,14 @@ sudo apt install fortune-mod cowsay -y
 
 - **Continuous Integration (CI)**
   - GitHub Actions workflow (`.github/workflows/ci.yml`)  
-  - Automatically builds and pushes the image to **GitHub Container Registry (GHCR)**  
+  - Automatically builds and pushes the image to **GHCR**  
   - Image published at:  
-    \`\`\`
+    ```
     ghcr.io/cnu1812/wisecow:latest
-    \`\`\`
+    ```
 
 #### 🧪 Local Testing
-\`\`\`bash
+```bash
 # Start cluster
 kind create cluster --name wisecow
 
@@ -53,17 +53,17 @@ kubectl -n ingress-nginx port-forward svc/ingress-nginx-controller 18080:80 1844
 
 # Access the app
 curl -k -H "Host: wisecow.local" https://127.0.0.1:18443/
-\`\`\`
+```
 
 #### 📦 Repository Structure
-\`\`\`
+```
 .
 ├── wisecow.sh                # Application source
 ├── Dockerfile                # Container definition
 ├── k8s/                      # Kubernetes manifests
 ├── .github/workflows/ci.yml  # GitHub Actions CI pipeline
 └── fortunes/                 # Custom fortune entries
-\`\`\`
+```
 
 
  
