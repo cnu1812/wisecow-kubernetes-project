@@ -1,0 +1,25 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: ksp-wisecow-block-file-writes
+  namespace: wisecow
+spec:
+  action: Block
+  severity: 9
+  message: "Block writes to sensitive files and system bin directories from wisecow"
+  selector:
+    matchLabels:
+      app: wisecow
+  file:
+    # specific sensitive files - blocked on write
+    matchPaths:
+      - path: /etc/shadow
+      - path: /etc/passwd
+    # block any write/modify in system bin directories (dir must end with '/')
+    matchDirectories:
+      - dir: /usr/bin/
+        recursive: false
+      - dir: /sbin/
+        recursive: false
+      - dir: /usr/sbin/
+        recursive: false

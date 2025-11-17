@@ -4,17 +4,15 @@ metadata:
   name: ksp-wisecow-audit-egress-http
   namespace: wisecow
 spec:
+  action: Audit
   severity: 6
   message: "Audit use of curl/wget (outbound HTTP attempts) from wisecow"
   selector:
     matchLabels:
       app: wisecow
-
   process:
     matchPaths:
-    - path: /usr/bin/curl
-    - path: /usr/bin/wget
-    - path: /bin/curl
-    - path: /bin/wget
-
-  action: Audit
+      - path: /usr/bin/curl
+      - path: /usr/bin/wget
+      - path: /bin/curl
+      - path: /bin/wget

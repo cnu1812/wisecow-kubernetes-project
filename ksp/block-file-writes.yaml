@@ -15,11 +15,11 @@ spec:
     - path: /etc/shadow
     - path: /etc/passwd
     matchDirectories:
-    - dir: /usr/bin
+    - dir: /usr/bin/
       recursive: false
-    - dir: /sbin
+    - dir: /sbin/
       recursive: false
-    - dir: /usr/sbin
+    - dir: /usr/sbin/
       recursive: false
 
   action: Block
