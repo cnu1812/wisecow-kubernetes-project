@@ -1,0 +1,24 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: ksp-wisecow-block-pkg-mgmt
+  namespace: wisecow
+spec:
+  severity: 9
+  message: "Block package managers and interactive shells in wisecow"
+  selector:
+    matchLabels:
+      app: wisecow
+
+  # match executables to block
+  process:
+    matchPaths:
+    - path: /usr/bin/apt
+    - path: /usr/bin/apt-get
+    - path: /usr/bin/wget
+    - path: /usr/bin/curl
+    - path: /usr/bin/python3
+    - path: /usr/bin/pip
+    - path: /bin/bash
+
+  action: Block

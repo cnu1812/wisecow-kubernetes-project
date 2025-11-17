@@ -1,0 +1,20 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: ksp-wisecow-audit-egress-http
+  namespace: wisecow
+spec:
+  severity: 6
+  message: "Audit outbound HTTP/HTTPS attempts from wisecow"
+  selector:
+    matchLabels:
+      app: wisecow
+
+  network:
+    matchProtocols:
+    - protocol: tcp
+      port: 80
+    - protocol: tcp
+      port: 443
+
+  action: Audit
